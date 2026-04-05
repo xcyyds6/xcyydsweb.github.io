@@ -1,37 +1,246 @@
-
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <title>你好！</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    
+    <title>星辰 | 全栈全端开发专家 - 个人技术空间</title>
+    <meta name="description" content="全栈全端开发专家，专注于 HTML/CSS/JavaScript 高性能前端，精通 Vue3、Node.js、PHP、Python 后端架构，以及 Android/Kotlin 原生移动端和小程序跨平台开发。">
+    <meta name="keywords" content="Vue3, Node.js, PHP, Python, Java/Kotlin, Android原生开发, 小程序开发, 全栈工程师, 全端交付">
+    <meta name="author" content="星辰">
+
     <style>
-        .container {
-            width: 60%;
-            margin: 10% auto 0;
-            background-color: #009986;
-            padding: 2% 5%;
-            border-radius: 10px;
+        :root {
+            --void-bg: #0a0c12;
+            --stellar-white: #eef2ff;
+            --nebula-blue: #7aa2f7;
+            --deep-space: rgba(15, 25, 45, 0.5);
+            --border-glow: rgba(122, 162, 247, 0.15);
+            --transition-speed: 0.3s;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--void-bg);
+            color: var(--stellar-white);
+            font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .ambient-layer {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 30% 10%, rgba(122, 162, 247, 0.08), transparent 70%);
+        }
+
+        .layout-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .brand-identity {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, var(--nebula-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .primary-nav { display: flex; gap: 2rem; }
+
+        .nav-item {
+            color: #cbd5e6;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-item:hover { color: #60a5fa; }
+
+        .intro-section { padding: 8rem 0 5rem; text-align: center; }
+
+        .status-chip {
+            display: inline-block;
+            background: rgba(122, 162, 247, 0.1);
+            padding: 0.35rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: #a5c9ff;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-glow);
+        }
+
+        .main-headline {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #b4d0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .capability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .skill-node {
+            background: var(--deep-space);
+            border-radius: 1.25rem;
+            padding: 2.2rem;
+            border: 1px solid var(--border-glow);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .skill-node:hover {
+            border-color: rgba(96, 165, 250, 0.5);
+            transform: translateY(-8px);
+            background: rgba(20, 35, 65, 0.6);
+        }
+
+        .node-icon { font-size: 2rem; margin-bottom: 1.2rem; }
+
+        .node-title {
+            font-size: 1.35rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
             color: #fff;
         }
 
-        ul {
-            padding-left: 20px;
+        .node-desc { color: #b0bedb; font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+        .tech-pill {
+            background: linear-gradient(135deg, rgba(82, 107, 201, 0.7), rgba(119, 87, 194, 0.7));
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-            ul li {
-                line-height: 2.3
-            }
+        .cta-trigger {
+            display: inline-block;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform var(--transition-speed);
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
+        }
 
-        a {
-            color: #20a53a
+        .cta-trigger:hover { transform: scale(1.05); }
+
+        .site-footer {
+            margin-top: 8rem;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        .legal-link { color: #64748b; text-decoration: none; margin: 10px 0; display: block; }
+        .legal-link:hover { color: var(--nebula-blue); }
+
+        @media (max-width: 768px) {
+            .intro-section { padding: 6rem 0 3rem; }
+            .primary-nav { gap: 1rem; }
+            .capability-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>你好！</h1>
-        <a href="http://beian.miit.gov.cn/" style="color:#E0E0E0">湘ICP备2023015057号</a >
-    </div>
+
+<div class="ambient-layer"></div>
+
+<div class="layout-wrapper">
+    <header class="site-header">
+        <div class="brand-identity">星辰</div>
+        <nav class="primary-nav">
+            <a href="#" class="nav-item">首页</a>
+            <a href="#tech" class="nav-item">技术栈</a>
+            <a href="mailto:xcdev@qq.com" class="nav-item">联系方式</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro-section">
+            <div class="status-chip">✦ Full-Stack & Cross-Platform Specialist</div>
+            <h1 class="main-headline">全端架构设计<br>让体验跨越终端</h1>
+            <p class="bio-text">你好，我是星辰。深耕 Vue3 高性能前端架构，并拥有 Node.js、PHP、Python 等多语言后端支撑能力。同时致力于 Android 原生与跨平台小程序（Kotlin）的高品质全周期交付。</p>
+            <div class="action-bar">
+                <a href="mailto:xcdev@qq.com" class="cta-trigger">即刻建立联系</a>
+            </div>
+        </section>
+
+        <section id="tech" class="capability-grid">
+            <article class="skill-node">
+                <div class="node-icon">🎨</div>
+                <h3 class="node-title">极致前端工程化</h3>
+                <p class="node-desc">基于 Vue3 生态构建响应式系统，深度优化渲染管线，确保每一像素的交互都能精准触达用户。</p>
+                <div class="tag-cloud">
+                    <span class="tech-pill">HTML/CSS</span>
+                    <span class="tech-pill">JavaScript</span>
+                    <span class="tech-pill">Vue3</span>
+                </div>
+            </article>
+
+            <article class="skill-node">
+                <div class="node-icon">📱</div>
+                <h3 class="node-title">全端移动化方案</h3>
+                <p class="node-desc">精通 Kotlin 语言进行 Android 系统级开发，结合小程序生态，提供全场景的移动端落地能力。</p>
+                <div class="tag-cloud">
+                    <span class="tech-pill">Kotlin</span>
+                    <span class="tech-pill">Android 原生</span>
+                    <span class="tech-pill">WeChat Mini</span>
+                </div>
+            </article>
+
+            <article class="skill-node">
+                <div class="node-icon">⚙️</div>
+                <h3 class="node-title">多维后端矩阵</h3>
+                <p class="node-desc">根据业务需求灵活调度 Node.js、PHP 或 Python，构建兼具稳定性与扩展性的微服务集群。</p>
+                <div class="tag-cloud">
+                    <span class="tech-pill">Node.js</span>
+                    <span class="tech-pill">PHP</span>
+                    <span class="tech-pill">Python</span>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 星辰 · 全栈全端技术空间</p>
+        <a href="http://beian.miit.gov.cn/" class="legal-link" target="_blank">湘ICP备2023015057号-1</a>
+        <p>Email: <a href="mailto:xcdev@qq.com" style="color: inherit;">xcdev@qq.com</a></p>
+    </footer>
+</div>
+
 </body>
 </html>
-
